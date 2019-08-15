@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Main CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main.css') }}">
+    <!--    <link   rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+    <!-- Font-icon css-->
+    <link rel="stylesheet" type="text/css"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>思成-注册用户</title>
+</head>
+<body>
+<section class="material-half-bg">
+    <div class="cover"></div>
+</section>
+<section class="login-content">
+    <div class="logo">
+        <h2>广州思成科技</h2>
+    </div>
+    <div class="login-box" style="min-width:600px; min-height:500px">
+        <form class="login-form" action="index.html">
+            <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>注册</h3>
+            <div class="form-group ">
+                <label class="control-label sr-only ">用户名</label>
+                <div class="input-group">
+                    <div class="input-group-prepend"><span class="input-group-text semibold-text">&nbsp用户名&nbsp</span>
+                    </div>
+                    <input class="form-control" id="username" name="username" type="text"
+                           placeholder="Username">
+                </div>
+                <div class="form-control-feedback" id="username_feedback" style="font-size:12px "
+                     align="right">
+                    <!--使用模板改变可视性和内容，颜色等-->
+                    <span style="visibility: hidden;color: #28a745">
+                        Success!
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label sr-only">邮箱</label>
+                <div class="input-group">
+                    <div class="input-group-prepend"><span
+                            class="input-group-text semibold-text">&nbsp邮&nbsp&nbsp&nbsp箱</span></div>
+                    <input class="form-control" id="email" name="email" type="email"
+                           placeholder="Email">
+                </div>
+                <div class="form-control-feedback" id="email_feedback" style="font-size:12px  " align="right">
+                    <span style="visibility: hidden">
+                        Success!
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label sr-only">密码</label>
+                <div class="input-group">
+                    <div class="input-group-prepend"><span
+                            class="input-group-text semibold-text">&nbsp密&nbsp&nbsp&nbsp码</span></div>
+                    <input class="form-control" id="password" name="password" type="password"
+                           placeholder="Password">
+                </div>
+                <div class="form-control-feedback" id="password_feedback" style="font-size:12px " align="right">
+                    <span style="visibility: hidden">
+                        Success!
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label sr-only">密码</label>
+                <div class="input-group">
+                    <div class="input-group-prepend"><span class="input-group-text semibold-text">确认密码</span></div>
+                    <input class="form-control" id="rep_password" name="Confirm_password" type="password"
+                           placeholder="Confirm password">
+                </div>
+                <div class="form-control-feedback" id="confirm_password_feedback" style="font-size:12px " align="right">
+                    <span style="visibility: hidden">
+                        Success!
+                    </span>
+                </div>
+                <div class="semibold-text mb-2" align="center" style="color: {{ color }}">
+                    <p>{{ info }}</p>
+                </div>
+                <div class="form-group btn-container">
+                    <button class="btn btn-primary btn-block" id="btn_register" formmethod="post"
+                            formaction={{url_for('register')}} style="margin-top: 20px">
+                        <i class="fa fa-sign-in fa-lg fa-fw"></i>注 册
+                    </button>
+                </div>
+                <div>
+                    <p class="semibold-text mb-2" align="right" style="margin-top: 10px"><a href="{{ url_for('login') }}">我已注册，前往登录</a></p>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+<!-- Essential javascripts for application to work-->
+<script src="{{ url_for('static',filename='js/jquery-3.2.1.min.js') }}"></script>
+<script src="{{ url_for('static',filename='js/popper.min.js') }}"></script>
+<script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static',filename='js/main.js') }}"></script>
+<!-- The javascript plugin to display page loading on top-->
+<script src=" {{ url_for('static',filename='js/plugins/pace.min.js') }}"></script>
+<script type="text/javascript">
+    // verification for the username
+    $(function () {
+        {#必须是name属性，不能是id，否则向服务器提交数据失败#}
+        $(":input[name='username']").change(function () {
+            var val = $(this).val();
+            val = $.trim(val);
+
+            if (val !== "") {
+
+                var url = "{{url_for('username_verification')}}";
+                 console.log("验证注册用户名发起的url:"+url);
+                var args = {"username": val, "time": new Date()};
+                $.post(url, args, function (data) {
+                    $("#username_feedback").html(data);
+                })
+            }
+        })
+    })
+</script>
+<script type="text/javascript">
+    $(function () {
+        //verification for the email
+        $(":input[name='email']").change(function () {
+            var email = $(this).val();
+            email = $.trim(email);
+
+            //邮箱正则模板
+            var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+
+            if (email == "") {
+                $("#email_feedback").html("<span style='visibility:visible;color: #A7181E'>邮箱不能为空</span>");
+            } else if (!reg.test(email)) {
+                $("#email_feedback").html("<span style='visibility:visible;color: #A7181E'>邮箱格式出错</span>");
+            } else {
+                $("#email_feedback").html("<span style='visibility:visible;color: #28a745'>邮箱可用</span>");
+            }
+        })
+    })
+</script>
+<script type="text/javascript">
+    // verification for the password
+    $(function () {
+        {#必须是name属性，不能是id，否则向服务器提交数据失败#}
+        $(":input[name='password']").change(function () {
+            var val = $(this).val();
+            val = $.trim(val);
+
+            if (val == "") {
+                $("#password_feedback").html("<span style='visibility:visible;color: #A7181E'>密码不能为空</span>");
+            } else if (val.length < 6) {
+                $("#password_feedback").html("<span style='visibility:visible;color: #A7181E'>密码不能小于6位</span>");
+            } else {
+                $("#password_feedback").html("<span style='visibility:visible;color: #28a745'>密码合理</span>");
+            }
+        })
+    })
+    $(function () {
+        $(":input[name='Confirm_password']").change(function () {
+            var val = $(this).val();
+            val = $.trim(val);
+            var password = $(":input[name='password']").val();
+
+            if (val !== password) {
+                $("#confirm_password_feedback").html("<span style='visibility:visible;color: #A7181E'>两次密码不一致</span>");
+            } else {
+                $("#confirm_password_feedback").html("<span style='visibility:visible;color: #28a745'>两次密码一致</span>");
+
+            }
+        })
+
+    })
+
+</script>
+</body>
+</html>

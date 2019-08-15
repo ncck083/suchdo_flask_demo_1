@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="description"
+          content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
+    <!-- Twitter meta-->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:site" content="@pratikborsadiya">
+    <meta property="twitter:creator" content="@pratikborsadiya">
+    <!-- Open Graph Meta-->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Vali Admin">
+    <meta property="og:title" content="Vali - Free Bootstrap 4 admin theme">
+    <meta property="og:url" content="http://pratikborsadiya.in/blog/vali-admin">
+    <meta property="og:image" content="http://pratikborsadiya.in/blog/vali-admin/hero-social.png">
+    <meta property="og:description"
+          content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
+    <title>上传数据</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Main CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main.css') }}">
+    <!-- Font-icon css-->
+    <link rel="stylesheet" type="text/css"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="app sidebar-mini rtl">
+<!-- Navbar-->
+<header class="app-header"><a class="app-header__logo" href="index.html">Suchdo</a>
+    <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar"
+                                    aria-label="Hide Sidebar"></a>
+    <!-- Navbar Right Menu-->
+    <ul class="app-nav">
+        <li class="app-search">
+            <input class="app-search__input" type="search" placeholder="Search">
+            <button class="app-search__button"><i class="fa fa-search"></i></button>
+        </li>
+        <!--Notification Menu-->
+        <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Show notifications"><i
+                class="fa fa-bell-o fa-lg"></i></a>
+            <ul class="app-notification dropdown-menu dropdown-menu-right">
+                <li class="app-notification__title">You have 4 new notifications.</li>
+                <div class="app-notification__content">
+                    <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span
+                            class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-primary"></i><i
+                            class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></span>
+                        <div>
+                            <p class="app-notification__message">Lisa sent you a mail</p>
+                            <p class="app-notification__meta">2 min ago</p>
+                        </div>
+                    </a></li>
+                    <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span
+                            class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-danger"></i><i
+                            class="fa fa-hdd-o fa-stack-1x fa-inverse"></i></span></span>
+                        <div>
+                            <p class="app-notification__message">Mail server not working</p>
+                            <p class="app-notification__meta">5 min ago</p>
+                        </div>
+                    </a></li>
+                    <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span
+                            class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-success"></i><i
+                            class="fa fa-money fa-stack-1x fa-inverse"></i></span></span>
+                        <div>
+                            <p class="app-notification__message">Transaction complete</p>
+                            <p class="app-notification__meta">2 days ago</p>
+                        </div>
+                    </a></li>
+                    <div class="app-notification__content">
+                        <li><a class="app-notification__item" href="javascript:;"><span
+                                class="app-notification__icon"><span class="fa-stack fa-lg"><i
+                                class="fa fa-circle fa-stack-2x text-primary"></i><i
+                                class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></span>
+                            <div>
+                                <p class="app-notification__message">Lisa sent you a mail</p>
+                                <p class="app-notification__meta">2 min ago</p>
+                            </div>
+                        </a></li>
+                        <li><a class="app-notification__item" href="javascript:;"><span
+                                class="app-notification__icon"><span class="fa-stack fa-lg"><i
+                                class="fa fa-circle fa-stack-2x text-danger"></i><i
+                                class="fa fa-hdd-o fa-stack-1x fa-inverse"></i></span></span>
+                            <div>
+                                <p class="app-notification__message">Mail server not working</p>
+                                <p class="app-notification__meta">5 min ago</p>
+                            </div>
+                        </a></li>
+                        <li><a class="app-notification__item" href="javascript:;"><span
+                                class="app-notification__icon"><span class="fa-stack fa-lg"><i
+                                class="fa fa-circle fa-stack-2x text-success"></i><i
+                                class="fa fa-money fa-stack-1x fa-inverse"></i></span></span>
+                            <div>
+                                <p class="app-notification__message">Transaction complete</p>
+                                <p class="app-notification__meta">2 days ago</p>
+                            </div>
+                        </a></li>
+                    </div>
+                </div>
+                <li class="app-notification__footer"><a href="#">See all notifications.</a></li>
+            </ul>
+        </li>
+        <!-- User Menu-->
+        <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i
+                class="fa fa-user fa-lg"></i></a>
+            <ul class="dropdown-menu settings-menu dropdown-menu-right">
+                <li><a class="dropdown-item" href="#"><i class="fa fa-cog fa-lg"></i> Settings</a></li>
+                <li><a class="dropdown-item" href="#"><i class="fa fa-user fa-lg"></i> Profile</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('logout') }}"><i class="fa fa-sign-out fa-lg"></i>
+                    Logout</a></li>
+            </ul>
+        </li>
+    </ul>
+</header>
+<!-- Sidebar menu-->
+<div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+<aside class="app-sidebar">
+    <ul class="app-menu">
+        <li class="treeview is-expanded"><a class="app-menu__item" href="#" data-toggle="treeview"><i
+                class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">功能区</span><i
+                class="treeview-indicator fa fa-angle-right"></i></a>
+            <ul class="treeview-menu">
+                <li><a class="treeview-item active" href="{{ url_for('upload_file') }}"><i
+                        class="icon fa fa-circle-o"></i>上传数据</a></li>
+            </ul>
+        </li>
+    </ul>
+</aside>
+<main class="app-content">
+    <div class="app-title">
+        <div>
+            <h2><i class="fa fa-dashboard"></i>上传数据</h2>
+            <p>这里可以上传表格、图片、视频、音频</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="tile">
+                <h3 class="tile-title">上传文件</h3>
+                <div class="tile-body">
+                    <form id="file_form">
+                        <div class="form-group">
+                            <fieldset disabled="">
+                                <label class="control-label" for="disabledInput">用户名</label>
+                                <input class="form-control" name="upload_username" id="upload_username" type="text"
+                                       placeholder="{{ user.name }}" disabled="">
+                            </fieldset>
+                        </div>
+                        <div class="form-group">
+                            <fieldset disabled="">
+                                <label class="control-label" for="disabledInput">邮箱</label>
+                                <input class="form-control" name="upload_email" id="upload_email" type="text"
+                                       placeholder="{{ user.email }}" disabled="">
+                            </fieldset>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">选择上传的内容</label>
+                            <input class="form-control" id="upload_file" name="file_upload" type="file">
+                        </div>
+                        <div class="form-control-feedback semibold-text" id="file_upload_feedback"
+                             style="color: #28a745  " align="center">
+                            <span style=" color: #b21f2d; visibility: hidden ">该文件已存在!</span>
+                        </div>
+                    </form>
+                </div>
+                <div class="tile-footer">
+                    <button class="btn btn-primary" id="btn_upload" type="button"><i
+                            class="fa fa-fw fa-lg fa-check-circle"></i>上传
+                    </button>&nbsp;
+                    &nbsp;<a class="btn btn-secondary" href="#"><i
+                        class="fa fa-fw fa-lg fa-times-circle"></i>取消</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="tile">
+                <h3 class="tile-title">预览图片</h3>
+                <div>
+                    <div class="form-group">
+                        <button class="btn" id="btn_img">点击查看上传的图片</button>
+                        <select class="form-control" style="margin-top: 20px" id="img_select">
+                            {#                            <option label="第一个" value="123">内容</option>#}
+                        </select>
+                    </div>
+
+                </div>
+                <img id="img_widget" src="" width=100% height=auto style="margin-top: 20px">
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Essential javascripts for application to work-->
+<script src="{{ url_for('static',filename='js/jquery-3.2.1.min.js') }}"></script>
+<!-- fileupload-->
+<script src="{{ url_for('static',filename='js/jquery.form.js') }}"></script>
+
+<script src="{{ url_for('static',filename='js/popper.min.js') }}"></script>
+<script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static',filename='js/main.js') }}"></script>
+<!-- The javascript plugin to display page loading on top-->
+<script src=" {{ url_for('static',filename='js/plugins/pace.min.js') }}"></script>
+<!-- mdk5-->
+<script src="https://cdn.bootcss.com/spark-md5/3.0.0/spark-md5.js"></script>
+<!-- Page specific javascripts-->
+<!-- Google analytics script-->
+<script type="text/javascript">
+    if (document.location.hostname == 'pratikborsadiya.in') {
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-72504830-1', 'auto');
+        ga('send', 'pageview');
+    }
+</script>
+<script type="text/javascript">
+
+    //实现文件的MD5校验
+    $(":input[name='file_upload']").change(function () {
+        var files = document.getElementById("upload_file").files;
+        if (files[0] != null) {
+            $("#file_upload_feedback").html("<span style='visibility:visible;color: #33CCCC'>正在检验文件MD5中...</span>");
+            // 计算文件的MD5
+            calculate_md5(files, function (md5) {
+                //alert(md5);
+                console.log(md5);
+                // $("#file_upload_feedback").html('<span style=\'visibility:visible;color: #A7181E\'>' + md5 + '</span>');
+                //发起ajax请求，验证md5是否存在
+                var url = "{{ url_for('upload_file_verification') }}";
+                var args = {"name": "{{user.name}}", "filename": files[0].name, "filename_md5": md5}
+
+                console.log(url + "---" + args);
+
+                $.post(url, args, function (data) {
+                    $("#file_upload_feedback").html(data);
+                })
+            })
+        } else {
+            $("#file_upload_feedback").html("<span style='visibility:visible;color: #A7181E'></span>");
+        }
+        {#alert("空文件出错");#}
+    });
+
+    //功能函数
+    function calculate_md5(file, callBack) {
+        var fileReader = new FileReader(),
+            spark = new SparkMD5();
+
+        fileReader.onload = function (e) {
+            //当这个事件发生时，说明数据准备好了，回调结果
+            callBack(SparkMD5.hashBinary(e.target.result))
+        };
+        //以二进制方式读取文件
+        fileReader.readAsBinaryString(file[0]);
+    }
+
+
+</script>
+<script type="text/javascript">
+
+    //将文件存储到下载目录
+    $("#btn_upload").click(function () {
+        // console.log("hello")
+        // alert("hello")
+
+        var files = document.getElementById("upload_file").files;
+
+        // 计算文件的MD5
+        calculate_md5(files, function (md5) {
+            //alert(md5);
+            console.log(md5);
+            // $("#file_upload_feedback").html('<span style=\'visibility:visible;color: #A7181E\'>' + md5 + '</span>');
+            //发起ajax请求，验证md5是否存在
+            var url = "{{ url_for('upload_file') }}";
+            var args = {"name": "{{user.name}}", "filename": files[0].name, "filename_md5": md5};
+
+            console.log(url + "---" + args);
+            //发起存储此次上传文件得MD5 ajax请求，这里并没有因为验证结果而拦截点击事件，需要补充
+            $.post(url, args, function (data) {
+                //解析json数据，判断是否拦截按键
+                //alert(data['save_flag']);
+
+                $("#file_upload_feedback").html("<span style='visibility:visible;color: #A7181E'>"+data.message+"</span>");
+
+                var save_flag = data['save_flag'];
+                if (save_flag) {
+                    console.log('start to call the method');
+                    ajaxUpload();
+                }
+
+            })
+        })
+    });
+
+
+    //功能函数
+    function calculate_md5(file, callBack) {
+        var fileReader = new FileReader(),
+            spark = new SparkMD5();
+
+        fileReader.onload = function (e) {
+            //当这个事件发生时，说明数据准备好了，回调结果
+            callBack(SparkMD5.hashBinary(e.target.result))
+        };
+        //以二进制方式读取文件
+        fileReader.readAsBinaryString(file[0]);
+    }
+
+
+    function ajaxUpload() {
+        $("#file_form").ajaxSubmit({
+            url: '{{ url_for('api_upload') }}',
+            type: 'post',
+            beforeSubmit: function () {
+                //提交前 验证
+            },
+            success: function (data) {
+                //成功操作
+                $("#file_upload_feedback").html("<span style='visibility:visible;color: #28a745'>"+data.message+"</span>");
+
+            },
+            error: function () {
+                //失败操作
+                  $("#file_upload_feedback").html("<span style='visibility:visible;color: #A7181E'>"+data.message+"</span>");
+            }
+        });
+    }
+</script>
+<script type="text/javascript">
+
+
+    $("#btn_img").click(function () {
+        $("#img_select").empty();
+
+        var url = "{{ url_for('api_query_all') }}";
+
+        $.get(url, function (data) {
+                var images = data["image_list"];
+                console.log(images);
+                for (var i = 0; i < images.length; i++) {
+                    $("#img_select").append('<option label="' + images[i] + '" value="' + i + '">' + images[i] + '</option>')
+                }
+            }
+        )
+    });
+
+</script>
+<script type="text/javascript">
+
+    $("#img_select").change(function () {
+        var options = $("#img_select option:selected");  //获取选中的项
+        // alert(options.val());   //拿到选中项的值
+        console.log(options.val());
+        console.log(options.text());
+        var url = '{{ url_for('download',filename="")}}' + options.text();
+
+        console.log("下载文件的url:" + url);
+        $("#img_widget").attr("src", url);
+
+        // alert(options.text());   //拿到选中项的文本
+    })
+
+
+</script>
+</body>
+</html>
